@@ -1,24 +1,15 @@
-[
-build
-]
+[build]
   command = "python -m pip install -r requirements.txt && python manage.py collectstatic --noinput"
-  functions = "netlify/functions"
   publish = "staticfiles"
 
-[
-build.environment
-]
-  PYTHON_VERSION = "3.13"  
-  DJANGO_SETTINGS_MODULE = "payment_API.settings"  # Replace with your project's settings module
+[build.environment]
+  PYTHON_VERSION = "3.10"
+  DJANGO_SETTINGS_MODULE = "payment_API.settings"
 
-[[
-redirects
-]]
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-[
-context.production.environment
-]
+[context.production.environment]
   DEBUG = "False"
