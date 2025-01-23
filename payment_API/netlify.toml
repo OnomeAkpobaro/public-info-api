@@ -1,0 +1,12 @@
+<antArtifact identifier="netlify-toml" type="application/vnd.ant.code" language="toml" title="Netlify Configuration">
+[build]
+  command = "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+  publish = "staticfiles"
+
+[build.environment]
+  PYTHON_VERSION = "3.10"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
