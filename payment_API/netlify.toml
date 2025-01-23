@@ -1,12 +1,24 @@
-<antArtifact identifier="netlify-toml" type="application/vnd.ant.code" language="toml" title="Netlify Configuration">
-[build]
-  command = "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+[
+build
+]
+  command = "python -m pip install -r requirements.txt && python manage.py collectstatic --noinput"
+  functions = "netlify/functions"
   publish = "staticfiles"
 
-[build.environment]
-  PYTHON_VERSION = "3.10"
+[
+build.environment
+]
+  PYTHON_VERSION = "3.13"  
+  DJANGO_SETTINGS_MODULE = "payment_API.settings"  # Replace with your project's settings module
 
-[[redirects]]
+[[
+redirects
+]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[
+context.production.environment
+]
+  DEBUG = "False"
